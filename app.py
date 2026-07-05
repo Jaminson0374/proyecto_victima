@@ -189,7 +189,7 @@ Reglas:
 def ask_rag(question):
 
     context = retrieve_context(
-        question
+        question    
     )
 
     prompt = f"""
@@ -292,17 +292,25 @@ if question:
 
     with st.chat_message("assistant"):
 
-        with st.spinner(
-            "Consultando normativa..."
-        ):
+    inicio = time.time()
 
-            answer = ask_rag(question)
+    with st.spinner("Buscando en la base documental..."):
 
-            st.markdown(answer)
+        respuesta = ask_rag(question)
+
+    fin = time.time()
+
+    st.markdown(respuesta)
+
+    st.caption(
+        f"⏱️ Tiempo de respuesta: {fin - inicio:.2f} segundos"
+    ) 
 
     st.session_state.messages.append(
         {
             "role": "assistant",
-            "content": answer
+            "content": respuesta
         }
-    )
+    )    
+
+   
