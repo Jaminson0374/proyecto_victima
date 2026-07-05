@@ -292,13 +292,13 @@ if question:
 
     with st.chat_message("assistant"):
 
-    inicio = time.time()
+        inicio = time.time()
 
     with st.spinner("Buscando en la base documental..."):
 
         respuesta = ask_rag(question)
 
-    fin = time.time()
+        fin = time.time()
 
     st.markdown(respuesta)
 
@@ -313,4 +313,3 @@ if question:
         }
     )    
 
-   
