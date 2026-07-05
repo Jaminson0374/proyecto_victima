@@ -62,6 +62,13 @@ Resolución 582 de 2021.
 
 # =====================================
 
+#@st.cache_resource
+#def load_embedding_model():
+
+    #return SentenceTransformer(
+     #   CONFIG["embedding_model"]
+    #)
+
 @st.cache_resource
 def load_embedding_model():
 
@@ -69,20 +76,26 @@ def load_embedding_model():
         CONFIG["embedding_model"]
     )
 
-@st.cache_resource
+embedding_model = load_embedding_model()
+
+st.success("Embedding cargado")
+
+
+#@st.cache_resource
 def load_llm():
     tokenizer = AutoTokenizer.from_pretrained(
         CONFIG["llm_model"]
     )
     model = AutoModelForCausalLM.from_pretrained(
         CONFIG["llm_model"],
-        device_map="auto"
+        #device_map="auto"
+        low_cpu_mem_usage=True
     )
     return tokenizer, model
 
 embedding_model = load_embedding_model()
 
-tokenizer, model = load_llm()
+#tokenizer, model = load_llm()
 
 # =====================================
 
@@ -98,7 +111,7 @@ def load_index():
 )
 
 
-index = load_index()
+#index = load_index()
 
 # =====================================
 
@@ -116,7 +129,7 @@ def load_chunks():
     ) as f:
         return json.load(f)
 
-chunks = load_chunks()
+#chunks = load_chunks()
 
 # =====================================
 
@@ -200,7 +213,7 @@ def ask_rag(question):
     context = retrieve_context(
         question
     )
-
+    tokenizer, model = load_llm()
     prompt = f"""
 
 
