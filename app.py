@@ -16,7 +16,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 CONFIG = {
 "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
-"llm_model": "Qwen/Qwen2.5-1.5B-Instruct",
+"llm_model": "Qwen/Qwen2.5-0.5B-Instruct",
 "top_k": 2,
 "temperature": 0.1,
 "max_tokens": 120
