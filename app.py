@@ -30,6 +30,23 @@ CONFIG = {
 
 # =====================================
 
+st.sidebar.title("Proyecto")
+
+st.sidebar.markdown("""
+## Asistente para Víctimas del Conflicto Armado
+
+Arquitectura:
+
+- RAG
+- FAISS
+- MiniLM
+- Qwen 2.5
+
+Autor:
+
+Jaminson Enrique Herrera Florez
+""")
+
 st.set_page_config(
 page_title="Asistente para Víctimas",
 page_icon="⚖️",
