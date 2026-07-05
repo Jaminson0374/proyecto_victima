@@ -1,4 +1,16 @@
 import streamlit as st
+st.write("Inicio de la aplicación")
+st.write("Cargando modelo...")
+st.write("Inicio")
+
+embedding_model = load_embedding_model()
+
+st.write("Embeddings OK")
+
+tokenizer, model = load_llm()
+
+st.write("LLM OK")
+
 import faiss
 import json
 import sqlite3
