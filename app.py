@@ -8,16 +8,6 @@ from datetime import datetime
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-st.write("PASO 1")
-st.write("PASO 2")
-#embedding_model = load_embedding_model()
-st.write("PASO 3")
-#tokenizer, model = load_llm()
-st.write("PASO 4")
-#index = load_index()
-st.write("PASO 5")
-#chunks = load_chunks()
-st.success("APP CARGADA")
 # =====================================
 
 # CONFIGURACIÓN
@@ -25,6 +15,7 @@ st.success("APP CARGADA")
 # =====================================
 
 CONFIG = {
+#Qwen/Qwen2.5-1.5B-Instruct
 "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
 "llm_model": "Qwen/Qwen2.5-0.5B-Instruct",
 "top_k": 2,
@@ -62,13 +53,6 @@ Resolución 582 de 2021.
 
 # =====================================
 
-#@st.cache_resource
-#def load_embedding_model():
-
-    #return SentenceTransformer(
-     #   CONFIG["embedding_model"]
-    #)
-
 @st.cache_resource
 def load_embedding_model():
 
@@ -76,26 +60,20 @@ def load_embedding_model():
         CONFIG["embedding_model"]
     )
 
-embedding_model = load_embedding_model()
-
-st.success("Embedding cargado")
-
-
-#@st.cache_resource
+@st.cache_resource
 def load_llm():
     tokenizer = AutoTokenizer.from_pretrained(
         CONFIG["llm_model"]
     )
     model = AutoModelForCausalLM.from_pretrained(
         CONFIG["llm_model"],
-        #device_map="auto"
-        low_cpu_mem_usage=True
+        device_map="auto"
     )
     return tokenizer, model
 
 embedding_model = load_embedding_model()
 
-#tokenizer, model = load_llm()
+tokenizer, model = load_llm()
 
 # =====================================
 
@@ -111,7 +89,7 @@ def load_index():
 )
 
 
-#index = load_index()
+index = load_index()
 
 # =====================================
 
@@ -129,7 +107,7 @@ def load_chunks():
     ) as f:
         return json.load(f)
 
-#chunks = load_chunks()
+chunks = load_chunks()
 
 # =====================================
 
@@ -213,7 +191,7 @@ def ask_rag(question):
     context = retrieve_context(
         question
     )
-    tokenizer, model = load_llm()
+
     prompt = f"""
 
 
