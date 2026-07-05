@@ -1,14 +1,4 @@
 import streamlit as st
-st.write("Inicio de la aplicación")
-st.write("Cargando modelo...")
-st.write("Inicio")
-
-
-st.write("Embeddings OK")
-
-
-st.write("LLM OK")
-
 import faiss
 import json
 import sqlite3
@@ -18,6 +8,16 @@ from datetime import datetime
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
+st.write("PASO 1")
+st.write("PASO 2")
+#embedding_model = load_embedding_model()
+st.write("PASO 3")
+#tokenizer, model = load_llm()
+st.write("PASO 4")
+#index = load_index()
+st.write("PASO 5")
+#chunks = load_chunks()
+st.success("APP CARGADA")
 # =====================================
 
 # CONFIGURACIÓN
