@@ -3,6 +3,7 @@ import faiss
 import json
 import sqlite3
 import numpy as np
+import time
 from datetime import datetime
 
 from sentence_transformers import SentenceTransformer
